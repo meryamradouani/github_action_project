@@ -1,0 +1,26 @@
+on: 
+    push:
+        branches:
+            - main
+        paths:
+            - "src/**" # si il modifier cette document src(/tout les sous-dossiers)
+            - "package.json"
+    pull_request:
+        branches:
+            - main
+            - "release/**" #si il 
+        paths:
+            - "src/**" # si il modifier cette document src(/tout les sous-dossiers)
+            - "package.json"
+jobs:
+    test:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v4.2.2
+
+            - name: List repository files
+              run: ls -la
+
+            - name: run tests
+              run: npm test
