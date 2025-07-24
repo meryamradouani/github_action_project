@@ -1,4 +1,4 @@
-EXPECTED_OUTPUT="hello , meryam"
+EXPECTED_OUTPUT="hello,meryam"
 OUTPUT=$(node -e "console.log(require('./src/app')('meryam'))")
 if [ "$OUTPUT" == "$EXPECTED_OUTPUT" ]; then
   echo "Test passed!"
