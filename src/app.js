@@ -5,6 +5,5 @@ function greet(name) {
 module.exports = greet;
 // src/app.js
 if (require.main === module) {
-  const name = process.argv[2] || 'world';
-  console.log(greet(name));
+  console.log(greet('world'));
 }
