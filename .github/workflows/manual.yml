@@ -1,3 +1,4 @@
+name: Déploiement personnalisé
 on:
   repository_dispatch:
     types:[incident_report]
