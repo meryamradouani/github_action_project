@@ -8,25 +8,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Exécution Job 1
-        run: echo "Exécution du ${{ github.job }}"
+      - run:
+          npm install
+          npm run build
+        working-directory: ./temp
+        shell: bash # pwsh , cmd , powershell 
 
-  job_2:
-    runs-on: ubuntu-latest 
-    needs: job_1  # Ce job dépend de job_1
-    steps:
-      - name: Exécution Job 2
-        run: echo "Exécution du ${{ github.job }} après job_1"
+      - run: print %ENV
+        shell: perl {0}
 
-  job_3:
-    runs-on: ubuntu-latest  
-    needs: job_1  # Ce job dépend de job_1
-    steps:
-      - name: Exécution Job 3
-        run: echo "Exécution du ${{ github.job }} après job_1"
-
-  job_4:
-    runs-on: ubuntu-latest  
-    needs: [job_1, job_3]  # Ce job dépend de job_1 ET job_3
-    steps:
-      - name: Exécution Job 4
-        run: echo "Exécution du ${{ github.job }} après job_1 et job_3"
+  
