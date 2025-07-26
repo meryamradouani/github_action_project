@@ -1,7 +1,7 @@
 name: Déploiement personnalisé
 on:
   repository_dispatch:
-    types:[incident_report]
+    types: [incident_report]
 
 jobs:
   handle-incident:
