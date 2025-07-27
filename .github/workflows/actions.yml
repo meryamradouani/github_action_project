@@ -1,24 +1,16 @@
 on:
-  workflow_dispatch:
+  workflow_dispatch: #manually triggered 
 
 jobs:
-  hybrid-job:
-    runs-on: ubuntu-latest
-    steps:
-      - name: run a command in ubuntu vm
-        run: echo "this runs on the ubuntu vm"
-      - name: run inside an alpine conatiner 
-        uses: docker://alpine:3.14
+  job-1:
+    strategy:
+      fail-fast: false
+      max-parallel: 3
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        node_version: [14.x, 16.x, 18.x]
+    runs-on: ${{ matrix.os }} # is run on the os (ubuntu, windows, macos)
+    steps: 
+      - uses: actions/setup-node@v3.6.
         with:
-          entrypoint: /bin/sh
-          args: |
-            -c "echo 'this step runs inside an alpine conatiner'"
-        
-      - name: Run another command in ubuntu vm
-        run: echo "back to the vm "
-
-
-       
-        
-            
-          
+          node-version: ${{ matrix.node_version }} # sets the node version
