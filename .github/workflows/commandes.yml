@@ -1,0 +1,12 @@
+on: 
+    workflow_dispatch:
+jobs:
+    exemple:
+        runs-on: ubuntu-latest
+        steps:
+            - name: warning message 
+              run: | # je veux afficher un messg d'erreur 
+                deprecated=true 
+                if [[ deprecated ]]; then
+                echo "::warning:: This is a deprecated message"
+                fi

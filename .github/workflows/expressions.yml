@@ -1,0 +1,10 @@
+on:
+    workflow_dispatch: #manually triggered
+jobs:
+    expressions:
+        runs-on: ubuntu-latest
+        steps:
+            - name: print a message
+              run: echo "This job is running"
+              if: ${{ startsWith(github.ref,'refs/heads/') }}
+
